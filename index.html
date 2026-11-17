@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nithya Murali | Resume</title>
+
+    <!-- Google Fonts: Poppins for headings, Open Sans for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- ========== NAVIGATION BAR ========== -->
+    <nav id="navbar">
+      <a href="#top" class="logo">NM</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- ========== HEADER ========== -->
+    <header id="top" class="hero">
+      <img
+        src="./images/profile.jpg"
+        alt="Profile photo of Nithya Murali"
+        class="profile-photo"
+      />
+      <div class="hero-text">
+        <h1>Hi, I'm <span class="highlight">Nithya Murali</span></h1>
+        <p class="tagline">
+          Medical Electronics Engineering Student &bull; Dayananda Sagar College of Engineering, Bengaluru
+        </p>
+        <a href="#contact" class="btn">Get in Touch</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ========== ABOUT / SUMMARY ========== -->
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <p class="intro">
+          I am a second-year Medical Electronics engineering student at
+          Dayananda Sagar College of Engineering, Bengaluru. I am interested in
+          how electronics and software can solve real problems in healthcare,
+          and I am currently part of a team building a device that records
+          children's breathing sounds to support asthma care. I enjoy
+          hands-on work, from 3D printing to programming in C, C++ and Python,
+          and I am learning web development to share my work online.
+        </p>
+      </section>
+
+      <!-- ========== EDUCATION ========== -->
+      <section id="education" class="section alt">
+        <h2>Education</h2>
+
+        <article class="timeline-item">
+          <span class="date">2025 – 2029 &bull; Currently in 2nd year</span>
+          <h3>B.E. in Medical Electronics</h3>
+          <p class="institution">Dayananda Sagar College of Engineering, Bengaluru</p>
+          <p>Affiliated to Visvesvaraya Technological University (VTU)</p>
+        </article>
+
+        <article class="timeline-item">
+          <span class="date">2025</span>
+          <h3>Class 12 (CBSE)</h3>
+          <p class="institution">PSBB Learning Leadership Academy (PSBBLLA), Bengaluru</p>
+        </article>
+
+        <article class="timeline-item">
+          <span class="date">2023</span>
+          <h3>Class 10 (CBSE)</h3>
+          <p class="institution">PSBB Learning Leadership Academy (PSBBLLA), Bengaluru</p>
+        </article>
+      </section>
+
+      <!-- ========== SKILLS (table) ========== -->
+      <section id="skills" class="section">
+        <h2>Technical Skills</h2>
+        <table class="skills-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Skills</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Programming</td>
+              <td>C, C++, Python</td>
+            </tr>
+            <tr>
+              <td>Engineering Software</td>
+              <td>MATLAB, CAED (Computer Aided Engineering Drawing)</td>
+            </tr>
+            <tr>
+              <td>Fabrication</td>
+              <td>3D Printing</td>
+            </tr>
+            <tr>
+              <td>Web Development</td>
+              <td>HTML5, CSS3</td>
+            </tr>
+            <tr>
+              <td>Tools</td>
+              <td>VS Code, GitHub, Chrome DevTools</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ========== PROJECTS (cards) ========== -->
+      <section id="projects" class="section alt">
+        <h2>Projects</h2>
+
+        <div class="card-container">
+          <article class="card featured">
+            <span class="badge">Featured</span>
+            <h3>Respiratory Sound Lab</h3>
+            <p>
+              A VTU community project on pediatric asthma. Our team is building
+              an ESP32-based device to record breathing sounds, along with a
+              website that explains wheeze detection.
+            </p>
+            <p class="tech">ESP32 &bull; Sensors &bull; HTML/CSS</p>
+          </article>
+
+          <article class="card">
+            <h3>Personal Resume Website</h3>
+            <p>
+              This website. Built with semantic HTML and an external CSS
+              stylesheet, and hosted on GitHub Pages.
+            </p>
+            <p class="tech">HTML5 &bull; CSS3 &bull; GitHub Pages</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== HOBBIES ========== -->
+      <section id="hobbies" class="section">
+        <h2>Hobbies &amp; Extracurriculars</h2>
+        <ul class="hobby-list">
+          <li>Dance</li>
+          <li>Basketball</li>
+          <li>Badminton</li>
+        </ul>
+      </section>
+
+      <!-- ========== CONTACT FORM ========== -->
+      <section id="contact" class="section alt">
+        <h2>Contact Me</h2>
+        <form class="contact-form" action="mailto:nithyamurali09@gmail.com" method="post" enctype="text/plain">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Write your message"></textarea>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <p>
+        <a href="mailto:nithyamurali09@gmail.com">nithyamurali09@gmail.com</a>
+        &bull;
+        <a href="https://github.com/nithyamurali09-coder" target="_blank">GitHub</a>
+      </p>
+      <p class="copyright">&copy; 2026 Nithya Murali. Built with HTML &amp; CSS.</p>
+    </footer>
+
+    <!-- Back-to-top button (position: fixed) -->
+    <a href="#top" id="back-to-top" title="Back to top">&uarr;</a>
+  </body>
+</html>

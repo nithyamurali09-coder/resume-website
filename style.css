@@ -1,0 +1,432 @@
+/* =========================================================
+   style.css — Resume Website
+   Organised top-to-bottom: variables → reset → global →
+   nav → header → sections → table → cards → form → footer
+   ========================================================= */
+
+/* ---------- 1. COLOUR PALETTE (CSS variables) ----------
+   One place to change every colour. Navy = trust/professional,
+   teal = fresh accent, light grey = calm background.        */
+:root {
+  --navy: #1e3a5f;
+  --teal: #14b8a6;
+  --teal-dark: #0f766e;
+  --light: #f5f7fa;
+  --text: #2d3748;
+  --white: #ffffff;
+}
+
+/* ---------- 2. RESET (universal selector) ----------
+   Browsers add their own margins; removing them gives us
+   full control. box-sizing makes width include padding+border. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- 3. GLOBAL TYPOGRAPHY (element selectors) ----------
+   font-family and color set on body are INHERITED by all text. */
+html {
+  scroll-behavior: smooth; /* nav links glide to sections */
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif; /* font stack with fallbacks */
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--white);
+}
+
+/* Grouping selector: same font for all headings */
+h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
+  color: var(--navy);
+}
+
+a {
+  color: var(--teal-dark);
+  text-decoration: none;
+}
+
+/* Pseudo-element: custom colour when the user highlights text */
+::selection {
+  background-color: var(--teal);
+  color: var(--white);
+}
+
+/* ---------- 4. NAVIGATION BAR (ID selector + sticky) ----------
+   position: sticky keeps the bar at the top while scrolling.
+   display: flex (explored beyond the notes) puts the logo on
+   the left and the links on the right in one line.           */
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* stays above the page content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 8%;
+  background-color: var(--navy);
+}
+
+#navbar .logo {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* Child selector (>) — only list items directly inside .nav-links */
+.nav-links > li {
+  display: inline-block; /* side by side, but still accepts padding */
+  list-style: none;
+}
+
+/* Descendant selector — links inside the nav list */
+.nav-links a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  color: var(--white);
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+/* Pseudo-class :hover — feedback when the mouse is over a link */
+.nav-links a:hover {
+  background-color: var(--teal);
+}
+
+/* ---------- 5. HEADER / HERO ---------- */
+.hero {
+  padding: 4rem 8%;
+  background-color: var(--light);
+  border-bottom: 5px solid var(--teal);
+  text-align: center;
+}
+
+/* Box model: border + border-radius 50% turns the square photo into a circle */
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border: 5px solid var(--white);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem; /* rem = relative to root font size (16px) */
+}
+
+/* <span> used to colour just the name inside the heading */
+.highlight {
+  color: var(--teal);
+}
+
+.tagline {
+  font-size: 1.15rem;
+  font-style: italic;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* ---------- 6. BUTTONS (reusable class) ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--teal);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit; /* buttons don't inherit fonts by default */
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--teal-dark);
+}
+
+/* ---------- 7. SECTIONS (class selectors) ---------- */
+.section {
+  padding: 4rem 8%;
+}
+
+/* Chaining (.section.alt): only sections with BOTH classes
+   get the grey background, giving alternating stripes.     */
+.section.alt {
+  background-color: var(--light);
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Pseudo-element ::after draws a short teal underline under every h2 */
+.section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 0.5rem auto 0; /* auto left/right centres it */
+  background-color: var(--teal);
+  border-radius: 2px;
+}
+
+/* ::first-letter makes a large drop-cap on the About paragraph */
+.intro {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.intro::first-letter {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* ---------- 8. EDUCATION TIMELINE (relative + absolute) ----------
+   Each item is position: relative so the teal dot (::before)
+   can be placed exactly with position: absolute.            */
+.timeline-item {
+  position: relative;
+  max-width: 750px;
+  margin: 0 auto 1.5rem;
+  padding: 1.2rem 1.5rem 1.2rem 2.5rem;
+  background-color: var(--white);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -11px; /* sits on top of the left border */
+  top: 1.5rem;
+  width: 18px;
+  height: 18px;
+  background-color: var(--white);
+  border: 4px solid var(--teal);
+  border-radius: 50%;
+}
+
+.date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+.institution {
+  font-weight: 600;
+}
+
+/* ---------- 9. SKILLS TABLE ---------- */
+.skills-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse; /* merges double cell borders into one */
+}
+
+.skills-table th,
+.skills-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.skills-table th {
+  color: var(--white);
+  background-color: var(--navy);
+}
+
+/* :nth-of-type(even) — zebra stripes on every second row */
+.skills-table tbody tr:nth-of-type(even) {
+  background-color: var(--light);
+}
+
+/* ---------- 10. PROJECT CARDS (inline-block layout) ----------
+   inline-block lets the cards sit side by side and wrap to the
+   next line on smaller screens.                             */
+.card-container {
+  text-align: center; /* centres the row of inline-block cards */
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top;
+  position: relative; /* anchor for the absolute badge */
+  width: 300px;
+  margin: 0.8rem;
+  padding: 1.8rem 1.5rem;
+  text-align: left;
+  background-color: var(--white);
+  border-top: 5px solid var(--teal);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+/* Lift the card slightly on hover */
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  margin-bottom: 0.6rem;
+}
+
+/* Chained selector: the featured card gets a navy top border */
+.card.featured {
+  border-top-color: var(--navy);
+}
+
+/* position: absolute pins the badge to the card's top-right corner */
+.badge {
+  position: absolute;
+  top: -12px;
+  right: 15px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--navy);
+  border-radius: 12px;
+}
+
+.tech {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+/* ---------- 11. HOBBIES (inline-block "chips") ---------- */
+.hobby-list {
+  text-align: center;
+  list-style: none;
+}
+
+.hobby-list li {
+  display: inline-block;
+  margin: 0.4rem;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid var(--teal);
+  border-radius: 25px;
+}
+
+.hobby-list li:hover {
+  color: var(--white);
+  background-color: var(--teal);
+}
+
+/* ---------- 12. CONTACT FORM ---------- */
+.contact-form {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form label {
+  display: block; /* each label on its own line */
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+/* Grouping + inherit: form controls do not inherit font by default */
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  padding: 0.7rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+}
+
+/* :focus — teal outline shows which box the user is typing in */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
+/* ---------- 13. FOOTER ---------- */
+footer {
+  padding: 2rem 8%;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--navy);
+}
+
+footer a {
+  color: var(--teal);
+}
+
+/* Attribute selector: links that open in a new tab get a ↗ arrow */
+footer a[target="_blank"]::after {
+  content: " \2197";
+}
+
+.copyright {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ---------- 14. BACK-TO-TOP BUTTON (position: fixed) ----------
+   Fixed to the viewport, so it stays in the bottom-right corner
+   no matter how far the user scrolls.                       */
+#back-to-top {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  line-height: 45px;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--teal);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-top:hover {
+  background-color: var(--teal-dark);
+}
+
+/* ---------- 15. SMALL SCREENS (media query) ----------
+   On phones, shrink the big heading and let cards use the
+   full width so nothing spills off the side.               */
+@media (max-width: 600px) {
+  #navbar {
+    padding: 0.8rem 4%;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .card {
+    width: 100%;
+    margin: 0.8rem 0;
+  }
+
+  .skills-table th,
+  .skills-table td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.85rem;
+  }
+}
